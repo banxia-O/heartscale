@@ -209,6 +209,16 @@ tempCodeRunnerFile.py
 # PyPI configuration file
 .pypirc
 
+# heartscale — user config (may contain API keys)
+config.yaml
+
+# heartscale — generated runtime files
+*.hermes/
+limbic.jsonl
+HEART.md
+HEART.md.bak.*
+heartscale.db
+
 # Marimo
 marimo/_static/
 marimo/_lsp/

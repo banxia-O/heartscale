@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "heartscale"
+version = "0.1.0"
+description = "Hierarchical Emotional Accumulation & Rendering Topology — human-like emotional memory for AI agents"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    "pyyaml>=6.0",
+    "openai>=1.30",          # OpenAI-compatible API client (works with any compatible provider)
+    "sqlite-vec>=0.1.6",     # Vector search inside SQLite
+    "python-dateutil>=2.9",
+    "schedule>=1.2",         # Lightweight cron scheduler
+    "click>=8.1",            # CLI entry points
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[project.scripts]
+heartscale = "heartscale.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["heartscale*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
