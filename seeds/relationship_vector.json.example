@@ -1,0 +1,8 @@
+{
+  "_note": "关系状态向量，每项取值 0.0–1.0。按你们的实际关系感受手动填写，然后运行 heartscale seed --vector 导入。",
+  "closeness": 0.5,
+  "dependency": 0.3,
+  "missing": 0.5,
+  "tension": 0.1,
+  "trust": 0.5
+}
