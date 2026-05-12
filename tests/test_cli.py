@@ -49,7 +49,7 @@ judge:
   api_key_env: "TEST_JUDGE_KEY"
   base_url: ""
 schedule:
-  daily_time: "23:30"
+  daily_time: "00:05"
   weekly_day: "sunday"
   monthly_day: 1
 """,

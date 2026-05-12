@@ -53,7 +53,7 @@ class ProviderConfig:
 
 @dataclass
 class ScheduleConfig:
-    daily_time: str = "23:30"
+    daily_time: str = "00:05"
     weekly_day: str = "sunday"
     monthly_day: int = 1
 
@@ -122,7 +122,7 @@ class Config:
 
         sched_raw = raw.get("schedule", {})
         schedule = ScheduleConfig(
-            daily_time=sched_raw.get("daily_time", "23:30"),
+            daily_time=sched_raw.get("daily_time", "00:05"),
             weekly_day=sched_raw.get("weekly_day", "sunday"),
             monthly_day=int(sched_raw.get("monthly_day", 1)),
         )

@@ -36,7 +36,7 @@ def config_file(tmp_path):
           api_key_env: "TEST_JUDGE_KEY"
           base_url: ""
         schedule:
-          daily_time: "23:30"
+          daily_time: "00:05"
           weekly_day: "sunday"
           monthly_day: 1
     """), encoding="utf-8")
@@ -51,7 +51,7 @@ def test_load_parses_all_sections(config_file):
     assert cfg.embedding.model == "text-embedding-3-small"
     assert cfg.embedding.dimension == 1024
     assert cfg.judge.model == "gpt-4o-mini"
-    assert cfg.schedule.daily_time == "23:30"
+    assert cfg.schedule.daily_time == "00:05"
     assert cfg.schedule.weekly_day == "sunday"
     assert cfg.schedule.monthly_day == 1
     assert ".md" in cfg.diary.extensions

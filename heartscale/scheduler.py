@@ -2,7 +2,7 @@
 
 Three schedule tiers (architecture section 11):
 
-  daily   23:30  → extract new diary → compress daily → render recent sections
+  daily   00:05  → extract new diary → compress daily → render recent sections
   weekly  Sunday → decay + L2 promotion + compress weekly → render mid sections
   monthly 1st    → compress monthly + cleanup → render all sections
 """
