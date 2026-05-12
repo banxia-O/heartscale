@@ -147,12 +147,13 @@ def _generate_id(date_str: str, index: int, existing_ids: set[str]) -> str:
 # ---------------------------------------------------------------------------
 
 _SYSTEM_ZH = """\
-你是一个情感记忆提取助手。你的任务是阅读日记内容，识别其中有情感意义的事件。
+你是一个情感备忘录助手。你的任务是阅读日记内容，识别其中有情感意义的事件。
 重点关注：人际连接、冲突、脆弱暴露、温暖陪伴、思念、依恋等情绪事件。
-无关紧要的日常琐事（吃饭、天气、购物等）请忽略，除非它们承载了明显的情绪意义。
+将每条事件写成简单的记忆条目，每条说清楚三件事：什么时候、发生了什么、当时的感受。
+不渲染、不加内心戏。无关紧要的日常琐事（吃饭、天气、购物等）忽略，除非承载了明显的情绪意义。
 
 输出格式：JSON 对象，包含 "events" 数组，每条事件包含以下字段：
-- summary: 一句话描述发生了什么（纯自然语言，不带任何标签或数字）
+- summary: 一句话描述（纯自然语言，不带任何标签或数字）
 - direction: "positive" / "negative" / "mixed"
 - flavor: 1-3 个情绪标签的数组，只能从以下选择：
   attachment / tenderness / guilt / anxiety / longing / pride / safe / bittersweet / conflict / rupture
@@ -162,15 +163,17 @@ _SYSTEM_ZH = """\
 要求：
 - 每篇日记提取 1-7 条事件，没有情绪事件则返回空数组
 - 条数宁少勿多，只提取真正有情感重量的时刻
-- summary 不能包含 intensity / direction / flavor 等元数据词语"""
+- summary 不能包含 intensity / direction / flavor 等元数据词语
+- 不能捏造事实"""
 
 _SYSTEM_EN = """\
-You are an emotional memory extraction assistant. Read the diary entry and identify emotionally significant events.
+You are an emotional memo assistant. Read the diary entry and identify emotionally significant events.
 Focus on: interpersonal connection, conflict, vulnerability, warmth, longing, attachment.
-Ignore mundane daily activities unless they carry clear emotional significance.
+Write each event as a plain memo entry covering three things: when it happened, what happened, and how it felt.
+No dramatization, no added subtext. Ignore mundane activities unless they carry clear emotional significance.
 
 Output format: JSON object with an "events" array. Each event must have:
-- summary: one sentence describing what happened (natural language, no metadata tags or numbers)
+- summary: one sentence (natural language, no metadata tags or numbers)
 - direction: "positive" / "negative" / "mixed"
 - flavor: array of 1-3 tags from:
   attachment / tenderness / guilt / anxiety / longing / pride / safe / bittersweet / conflict / rupture
@@ -180,7 +183,8 @@ Output format: JSON object with an "events" array. Each event must have:
 Rules:
 - Extract 1-7 events per diary; return empty array if no emotional events found
 - Prefer fewer high-quality events over many mediocre ones
-- summary must not contain metadata words like intensity / direction / flavor"""
+- summary must not contain metadata words like intensity / direction / flavor
+- Do not fabricate facts"""
 
 
 def _build_prompt(date_str: str, text: str, language: str) -> tuple[str, str]:

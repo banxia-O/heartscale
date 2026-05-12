@@ -265,25 +265,25 @@ def _backup(heart_path: Path, backup_dir: Path, keep: int) -> None:
 # ---------------------------------------------------------------------------
 
 _RENDER_SYSTEM_ZH = """\
-你是一个情感记忆渲染助手。你的任务是将简短的记忆条目，渲染成流动自然的中文段落。
+你是一个情感备忘录整理助手。你的任务是将一组简短的记忆条目，串联成一段平实的中文段落。
 
 严格要求：
 - 纯自然语言，绝对不出现 intensity、flavor、direction、positive、negative、mixed 等元数据词汇
-- 第一人称视角（"我"），写出内心感受和时间质感
-- 像在回忆，不像在报告或列清单
-- 如有冲突或波折，要如实呈现，不要只写美好的部分
+- 第一人称视角（"我"），只写记忆条目里实际发生的事和当时的感受
+- 平实克制，不渲染、不加内心戏、不捏造记忆里没有的情节
+- 如有冲突或波折，如实呈现，不回避也不夸大
 - 控制在约 {quota} 字以内
 - 不要另起标题或分段，输出一个连贯的段落"""
 
 _RENDER_SYSTEM_EN = """\
-You are an emotional memory renderer. Your task is to weave brief memory entries
-into a flowing, natural English paragraph.
+You are an emotional memo organizer. Your task is to connect brief memory entries
+into a plain, grounded English paragraph.
 
 Strict rules:
 - Pure natural language — never use metadata words like intensity, flavor,
   direction, positive, negative, mixed
-- First-person perspective, conveying feeling and texture of time
-- Write as if remembering, not reporting or listing
-- If there were conflicts or tension, represent them honestly
+- First-person perspective, only writing what actually happened and how it felt
+- Plain and restrained — no dramatization, no added subtext, no fabricated details
+- If there were conflicts or tension, represent them honestly without exaggeration
 - Stay within approximately {quota} characters
 - Output a single cohesive paragraph with no sub-headings"""
