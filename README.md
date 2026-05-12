@@ -190,8 +190,8 @@ heartscale scheduler
 也可以用系统 crontab：
 
 ```crontab
-# 每天 23:30 日更
-30 23 * * * cd /your/heartscale && heartscale extract && heartscale compress --daily && heartscale render --sections recent_7d,recent_1m
+# 每天 00:05 日更（次日凌晨，等日记在 23:59 写完后再启动，留 5 分钟缓冲）
+5 0 * * * cd /your/heartscale && heartscale extract && heartscale compress --daily && heartscale render --sections recent_7d,recent_1m
 
 # 每周日 深夜 周更
 0 0 * * 0 cd /your/heartscale && heartscale compress --weekly && heartscale render --sections recent_2m,relationship
@@ -226,7 +226,7 @@ system_prompt = soul_md + "\n\n" + heart_md
 | `embedding.base_url` | 空 | 留空用官方 OpenAI；填地址接其他 API |
 | `embedding.dimension` | `1024` | 向量维度，与模型匹配 |
 | `judge.provider` | `openai` | LLM 判官，同上 |
-| `schedule.daily_time` | `23:30` | 每日运行时间 |
+| `schedule.daily_time` | `00:05` | 每日运行时间（建议晚于日记写入时间，留 5 分钟缓冲）|
 | `schedule.weekly_day` | `sunday` | 每周运行日 |
 
 完整说明见 `config.yaml.example`。
